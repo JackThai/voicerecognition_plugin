@@ -1,5 +1,7 @@
 package com.shareclarity.voicerecognition;
 
+import android.app.Activity;
+
 import io.flutter.plugin.common.MethodCall;
 import io.flutter.plugin.common.MethodChannel;
 import io.flutter.plugin.common.MethodChannel.MethodCallHandler;
@@ -7,19 +9,11 @@ import io.flutter.plugin.common.MethodChannel.Result;
 import io.flutter.plugin.common.PluginRegistry.Registrar;
 
 /** VoiceRecognitionPlugin */
-public class VoiceRecognitionPlugin implements MethodCallHandler {
+public class VoiceRecognitionPlugin {
   /** Plugin registration. */
+  public static Activity mActivity;
   public static void registerWith(Registrar registrar) {
-    final MethodChannel channel = new MethodChannel(registrar.messenger(), "voice_recognition");
-    channel.setMethodCallHandler(new VoiceRecognitionPlugin());
-  }
-
-  @Override
-  public void onMethodCall(MethodCall call, Result result) {
-    if (call.method.equals("getPlatformVersion")) {
-      result.success("Android " + android.os.Build.VERSION.RELEASE);
-    } else {
-      result.notImplemented();
-    }
+    mActivity = registrar.activity();
+    registrar.platformViewRegistry().registerViewFactory("voice_recognition",new VoiceRecognitionFactory(registrar.messenger()));
   }
 }
