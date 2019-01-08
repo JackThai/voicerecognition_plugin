@@ -54,6 +54,7 @@
     int64_t _viewId;
     FlutterMethodChannel* _channel;
     NSDictionary* companies;
+    UIView* mView;
 }
 
 - (instancetype)initWithWithFrame:(CGRect)frame
@@ -71,18 +72,20 @@
         [_channel setMethodCallHandler:^(FlutterMethodCall* call, FlutterResult result) {
             [weakSelf onMethodCall:call result:result];
         }];
+        UIViewController* vc = [UIApplication sharedApplication].keyWindow.rootViewController;
+        mView = [[UIView alloc] init];
+        [mView setBackgroundColor:UIColor.clearColor];
+        UIColor* visualizerColor = [UIColor colorWithRed:255.0/255.0 green:255.0 / 255.0 blue:255.0 / 255.0 alpha:1.0];
+        _audioVisualizer = [[ATAudioVisualizer alloc] initWithBarsNumber:11 frame:CGRectMake((vc.view.bounds.size.width - 240) / 2, 0 , 240, 66) andColor:visualizerColor];
+        [mView addSubview:_audioVisualizer];
         
     }
     return self;
 }
 
 - (UIView*)view {
-    UIViewController* vc = [UIApplication sharedApplication].keyWindow.rootViewController;
-    UIView* view = [[UIView alloc] init];
-    UIColor* visualizerColor = [UIColor colorWithRed:255.0/255.0 green:84.0 / 255.0 blue:116.0 / 255.0 alpha:1.0];
-    _audioVisualizer = [[ATAudioVisualizer alloc] initWithBarsNumber:11 frame:CGRectMake((vc.view.bounds.size.width - 240) / 2, 0 , 240, 66) andColor:visualizerColor];
-    [view addSubview:_audioVisualizer];
-    return view;
+    
+    return mView;
 }
 
 - (void)onMethodCall:(FlutterMethodCall*)call result:(FlutterResult)result {

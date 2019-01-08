@@ -14,6 +14,7 @@ public class VoiceRecognitionPlugin {
   public static Activity mActivity;
   public static void registerWith(Registrar registrar) {
     mActivity = registrar.activity();
+
     registrar.platformViewRegistry().registerViewFactory("voice_recognition",new VoiceRecognitionFactory(registrar.messenger()));
   }
 }

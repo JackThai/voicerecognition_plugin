@@ -360,7 +360,7 @@ public class RecognitionProgressView extends View implements RecognitionListener
       recognitionListener.onEndOfSpeech();
     }
     isSpeaking = false;
-    startTransformInterpolation();
+//    startTransformInterpolation();
   }
 
   @Override
