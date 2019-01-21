@@ -24,22 +24,22 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
         home: Scaffold(
-            body: Stack(
-              alignment: FractionalOffset.center,
-              children: <Widget>[
-                VoiceRecognition(
-                  onVoiceRecognitionCreated: _onVoiceRecognitionCreated,
+            body: new Container(
+              height: 100,
+              decoration: new BoxDecoration(
+                gradient: new LinearGradient(colors: [Colors.purple[500], Colors.purple[700]],
+                    begin: const FractionalOffset(0.5, 0.0),
+                    end: const FractionalOffset(0.0, 0.5),
+                    stops: [0.0,1.0],
+                    tileMode: TileMode.clamp
                 ),
-                Text(
-                  resultString != null ? resultString : '',
-                  style: TextStyle(
-                      color: Colors.red,
-                      fontSize: 20.0
-                  ),
-                )
-
-              ],
+              ),
+              child: VoiceRecognition(
+                onVoiceRecognitionCreated: _onVoiceRecognitionCreated,
+              ),
             )
+
+
         )
     );
   }

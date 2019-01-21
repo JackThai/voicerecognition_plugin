@@ -1,8 +1,8 @@
 name: voice_recognition
 description: A new flutter plugin project.
-version: 0.0.1
-author:
-homepage:
+version: 0.0.2
+author: Thai
+homepage: https://shareclarity.com
 
 environment:
   sdk: ">=2.0.0-dev.68.0 <3.0.0"

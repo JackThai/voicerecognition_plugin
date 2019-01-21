@@ -35,14 +35,14 @@ import java.util.List;
 
 public class RecognitionProgressView extends View implements RecognitionListener {
 
-  public static final int BARS_COUNT = 5;
+  public static final int BARS_COUNT = 11;
 
   private static final int CIRCLE_RADIUS_DP = 5;
   private static final int CIRCLE_SPACING_DP = 11;
   private static final int ROTATION_RADIUS_DP = 25;
   private static final int IDLE_FLOATING_AMPLITUDE_DP = 3;
 
-  private static final int[] DEFAULT_BARS_HEIGHT_DP = { 60, 46, 70, 54, 64 };
+  private static final int[] DEFAULT_BARS_HEIGHT_DP = { 50, 48, 36, 46, 32 , 48, 56, 34, 24 , 48, 48};
 
   private static final float MDPI_DENSITY = 1.5f;
 
@@ -256,8 +256,8 @@ public class RecognitionProgressView extends View implements RecognitionListener
   private void initBars() {
     final List<Integer> heights = initBarHeights();
     int firstCirclePosition = getMeasuredWidth() / 2 -
-        2 * spacing -
-        4 * radius;
+            (BARS_COUNT / 2) * spacing -
+            (BARS_COUNT / 2) * 2 * radius;
     for (int i = 0; i < BARS_COUNT; i++) {
       int x = firstCirclePosition + (2 * radius + spacing) * i;
       RecognitionBar bar = new RecognitionBar(x, getMeasuredHeight() / 2, 2 * radius, heights.get(i), radius);

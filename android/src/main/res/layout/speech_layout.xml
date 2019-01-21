@@ -10,8 +10,9 @@
 
     <com.shareclarity.voicerecognition.speechrecognitionview.RecognitionProgressView
         android:id="@+id/recognition_view"
+        android:background="@android:color/transparent"
         android:layout_marginTop="30dp"
-        android:layout_width="100dp"
+        android:layout_width="250dp"
         android:layout_height="42dp"
         android:layout_gravity="center"
         />

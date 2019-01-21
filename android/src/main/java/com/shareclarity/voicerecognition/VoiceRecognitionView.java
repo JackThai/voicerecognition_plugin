@@ -54,13 +54,19 @@ public class VoiceRecognitionView  implements PlatformView, MethodChannel.Method
 
         int[] colors = {
                 VoiceRecognitionPlugin.mActivity.getResources().getColor(R.color.color1),
-                VoiceRecognitionPlugin.mActivity.getResources().getColor(R.color.color2),
-                VoiceRecognitionPlugin.mActivity.getResources().getColor(R.color.color3),
-                VoiceRecognitionPlugin.mActivity.getResources().getColor(R.color.color4),
-                VoiceRecognitionPlugin.mActivity.getResources().getColor(R.color.color5),
+                VoiceRecognitionPlugin.mActivity.getResources().getColor(R.color.color1),
+                VoiceRecognitionPlugin.mActivity.getResources().getColor(R.color.color1),
+                VoiceRecognitionPlugin.mActivity.getResources().getColor(R.color.color1),
+                VoiceRecognitionPlugin.mActivity.getResources().getColor(R.color.color1),
+                VoiceRecognitionPlugin.mActivity.getResources().getColor(R.color.color1),
+                VoiceRecognitionPlugin.mActivity.getResources().getColor(R.color.color1),
+                VoiceRecognitionPlugin.mActivity.getResources().getColor(R.color.color1),
+                VoiceRecognitionPlugin.mActivity.getResources().getColor(R.color.color1),
+                VoiceRecognitionPlugin.mActivity.getResources().getColor(R.color.color1),
+                VoiceRecognitionPlugin.mActivity.getResources().getColor(R.color.color1),
         };
 
-        int[] heights = { 50, 48, 36, 46, 32 };
+        int[] heights = { 50, 48, 36, 46, 32 , 48, 56, 34, 24 , 48, 48};
 
 
         LayoutInflater inflater = LayoutInflater.from(VoiceRecognitionPlugin.mActivity);
