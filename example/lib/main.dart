@@ -22,10 +22,13 @@ class _MyAppState extends State<MyApp> {
   // Platform messages are asynchronous, so we initialize in an async method.
   @override
   Widget build(BuildContext context) {
+//    double fullWidth = MediaQuery.of(context).size.width;
+//    double fullHeight = MediaQuery.of(context).size.height;
     return MaterialApp(
         home: Scaffold(
             body: new Container(
-              height: 100,
+              width: 300,
+              height: 500,
               decoration: new BoxDecoration(
                 gradient: new LinearGradient(colors: [Colors.purple[500], Colors.purple[700]],
                     begin: const FractionalOffset(0.5, 0.0),
@@ -34,9 +37,19 @@ class _MyAppState extends State<MyApp> {
                     tileMode: TileMode.clamp
                 ),
               ),
-              child: VoiceRecognition(
-                onVoiceRecognitionCreated: _onVoiceRecognitionCreated,
-              ),
+              child: Stack(
+                alignment: AlignmentDirectional.center,
+                children: <Widget>[
+                  Container(
+                      width: 250,
+                      height: 100,
+                      color: Color.fromARGB(255, 255, 0, 0),
+                      child: VoiceRecognition(
+                        onVoiceRecognitionCreated: _onVoiceRecognitionCreated,
+                      ),
+                  ),
+                ],
+              )
             )
 
 

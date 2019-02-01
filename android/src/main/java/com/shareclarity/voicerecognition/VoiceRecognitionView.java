@@ -6,6 +6,7 @@ import android.app.Application;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.speech.RecognitionListener;
 import android.speech.RecognizerIntent;
@@ -14,6 +15,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.FrameLayout;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.shareclarity.voicerecognition.speechrecognitionview.RecognitionProgressView;
@@ -25,6 +27,7 @@ import java.util.HashMap;
 import io.flutter.plugin.common.BinaryMessenger;
 import io.flutter.plugin.common.MethodCall;
 import io.flutter.plugin.common.MethodChannel;
+import io.flutter.plugin.common.PluginRegistry;
 import io.flutter.plugin.platform.PlatformView;
 
 public class VoiceRecognitionView  implements PlatformView, MethodChannel.MethodCallHandler{
@@ -35,11 +38,10 @@ public class VoiceRecognitionView  implements PlatformView, MethodChannel.Method
 
     //Speech Recognition
     private SpeechRecognizer speech;
-    String transcription = "";
     private boolean cancelled = false;
     private Intent recognizerIntent;
 
-    VoiceRecognitionView(Context _context, BinaryMessenger messenger, int id, Object object) {
+    VoiceRecognitionView(Context _context, BinaryMessenger messenger, int id, Object object, PluginRegistry.Registrar registrar) {
         context = _context;
         methodChannel = new MethodChannel(messenger, "voice_recognition_" + id);
         methodChannel.setMethodCallHandler(this);
@@ -70,9 +72,9 @@ public class VoiceRecognitionView  implements PlatformView, MethodChannel.Method
 
 
         LayoutInflater inflater = LayoutInflater.from(VoiceRecognitionPlugin.mActivity);
+        View view = inflater.inflate(R.layout.speech_layout, null);
 
-        mView = inflater.inflate(R.layout.speech_layout, null);
-        final RecognitionProgressView recognitionProgressView = (RecognitionProgressView) mView.findViewById(R.id.recognition_view);
+        final RecognitionProgressView recognitionProgressView = (RecognitionProgressView) view.findViewById(R.id.recognition_view);
 
         recognitionProgressView.setColors(colors);
         recognitionProgressView.setBarMaxHeightsInDp(heights);
@@ -81,6 +83,8 @@ public class VoiceRecognitionView  implements PlatformView, MethodChannel.Method
         recognitionProgressView.setIdleStateAmplitudeInDp(5);
         recognitionProgressView.setRotationRadiusInDp(10);
         recognitionProgressView.play();
+
+        mView = view;
         if (checkSelfPermission(Manifest.permission.RECORD_AUDIO) == PackageManager.PERMISSION_GRANTED) {
             speech = SpeechRecognizer.createSpeechRecognizer(VoiceRecognitionPlugin.mActivity.getApplicationContext());
             recognitionProgressView.setSpeechRecognizer(speech);
@@ -120,6 +124,7 @@ public class VoiceRecognitionView  implements PlatformView, MethodChannel.Method
 
     @Override
     public View getView() {
+        mView.setBackgroundColor(VoiceRecognitionPlugin.mActivity.getResources().getColor(R.color.color5));
         return mView;
     }
 

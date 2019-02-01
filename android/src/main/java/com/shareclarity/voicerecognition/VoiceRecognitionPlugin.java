@@ -1,6 +1,7 @@
 package com.shareclarity.voicerecognition;
 
 import android.app.Activity;
+import android.graphics.PixelFormat;
 
 import io.flutter.plugin.common.MethodCall;
 import io.flutter.plugin.common.MethodChannel;
@@ -14,7 +15,7 @@ public class VoiceRecognitionPlugin {
   public static Activity mActivity;
   public static void registerWith(Registrar registrar) {
     mActivity = registrar.activity();
-
-    registrar.platformViewRegistry().registerViewFactory("voice_recognition",new VoiceRecognitionFactory(registrar.messenger()));
+    VoiceRecognitionFactory factory = new VoiceRecognitionFactory(registrar.messenger(), registrar);
+    registrar.platformViewRegistry().registerViewFactory("voice_recognition",factory);
   }
 }
