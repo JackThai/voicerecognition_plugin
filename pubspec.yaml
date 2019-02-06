@@ -1,6 +1,6 @@
 name: voice_recognition
 description: A new flutter plugin project.
-version: 0.0.5
+version: 0.0.6
 author: Thai
 homepage: https://shareclarity.com
 
@@ -23,7 +23,8 @@ flutter:
   plugin:
     androidPackage: com.shareclarity.voicerecognition
     pluginClass: VoiceRecognitionPlugin
-
+  assets:
+    - assets/bg_share.png
   # To add assets to your plugin package, add an assets section, like this:
   # assets:
   #  - images/a_dot_burr.jpeg

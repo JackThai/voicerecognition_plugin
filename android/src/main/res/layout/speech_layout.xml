@@ -3,9 +3,8 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/frameLayout"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:background="@android:color/transparent"
-
+    android:layout_height="100dp"
+    android:background="@mipmap/bg_share"
     android:orientation="vertical">
 
 

@@ -124,7 +124,6 @@ public class VoiceRecognitionView  implements PlatformView, MethodChannel.Method
 
     @Override
     public View getView() {
-        mView.setBackgroundColor(VoiceRecognitionPlugin.mActivity.getResources().getColor(R.color.color5));
         return mView;
     }
 
