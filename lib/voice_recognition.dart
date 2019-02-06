@@ -54,6 +54,7 @@ class VoiceRecognitionState extends State<VoiceRecognition> with WidgetsBindingO
         viewType: "voice_recognition",
         onPlatformViewCreated: _onPlatformViewCreated,
         creationParams: null,
+
         creationParamsCodec: new StandardMessageCodec(),
       );
     }

@@ -130,7 +130,11 @@ public class VoiceRecognitionView  implements PlatformView, MethodChannel.Method
 
     @Override
     public void dispose() {
+        speech.stopListening();
+    }
 
+    private void stopRecognition() {
+        speech.stopListening();
     }
 
     private int checkSelfPermission(String permission) {
@@ -153,6 +157,7 @@ public class VoiceRecognitionView  implements PlatformView, MethodChannel.Method
                 result.success("");
                 break;
             case "voice.stop":
+                stopRecognition();
                 result.success("");
                 break;
 
